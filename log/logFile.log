@@ -1,0 +1,5 @@
+2019-11-12 10:18:11,830 - ERROR -Leo : vibratedVoice_ensemble.pyconfig.ini檔案不存在
+2019-11-12 10:34:48,581 - ERROR -Leo : [vibratedVoice_ensemble.py] config.ini檔案不存在
+2019-11-12 11:06:05,360 - ERROR -Leo : File "C:/ACS/AI7000/Project/IncineratorMotor/code/spyderVibrated/vibratedVoice_ensemble.py", line 99, in <module>: [KeyError] logFile
+2019-11-12 11:06:08,891 - ERROR -Leo : File "C:/ACS/AI7000/Project/IncineratorMotor/code/spyderVibrated/vibratedVoice_ensemble.py", line 99, in <module>: [KeyError] logFile
+2019-11-12 13:24:43,594 - ERROR -Leo : File "C:/ACS/AI7000/Project/IncineratorMotor/code/spyderVibrated/vibratedVoice_ensemble.py", line 50, in <module>: [DuplicateOptionError] start
