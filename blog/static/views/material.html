@@ -1,0 +1,57 @@
+<div ng-controller="materialCtrl">
+
+	<button id="create-user" type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
+		<i class="glyphicon glyphicon-plus">
+		</i>Add random item
+	</button>
+
+	<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+		<thead>
+			<tr>
+				
+				<th st-sort="material">material</th>
+				<th st-sort="unitcost">unitcost</th>
+				<th st-sort="updatetime">updatetime</th>
+				
+			</tr>
+			<tr>                  
+				<th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text" /></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				
+				<td>[[row.pk]]</td>
+				<td>[[row.fields.unitcost]]</td>
+				<td>[[row.fields.updatetime]]</td>
+				
+				<td>
+					<button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+						<i class="glyphicon glyphicon-remove-circle">
+						</i>
+					</button>
+
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					<div st-pagination="" st-items-by-page="7" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+
+
+	<span style="float:left;">新增材料品項</span>
+	<input  class="form-control" style="width:100px;float:left;"  type="text" ng-model="material_name" />
+	<span style="float:left;">單位成本</span>
+	<input  class="form-control" style="width:100px;float:left;"  type="text" ng-model="material_unicost" />
+	<span style="float:left;">更新日期</span>
+	<input  class="form-control" style="width:100px;float:left;"  type="text" ng-model="material_updatetime" />
+	<button type="submit" class="save btn btn-default" style="color:steelblue;float:left;" ng-click="addItem()">
+		<i class="fa fa-plus" ></i>
+	</button>			
+</div>

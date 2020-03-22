@@ -1,0 +1,75 @@
+<div style="height:500px;" ng-controller="MainController" ng-init="todayincome()">
+	<div style="margin:auto 0;">
+		<div class="large-padded-row">
+                
+			<div class="padded-row" style="width:40%;float:left;">
+				<!-- [[product]] -->
+				<angucomplete id="ex1" placeholder="Search item" pause="100" selectedobject="selectedProduct" localdata="product" searchfields="pk" titlefield="pk" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
+			</div>
+			<div class="" ng-show="selectedProduct">
+				<!-- You selected <span class="bold-span">[[selectedProduct.originalObject.pk]]</span>  -->
+			</div>
+			<input class="form-control" style="width:10%;margin-left:50px;float:left;"  type="text" ng-model="unit" name="skill" />
+			<button type="submit" class="save btn btn-default" style="float:left;color:steelblue" ng-click="additem()">
+				<i class="fa fa-plus" ></i>
+			</button>		
+			
+	
+			<input class="form-control" style="width:20%;margin-left:50px;float:right;"  type="text" ng-model="changedate" value="changedate" />
+			<button ng-show="rowCollection.length!=0" id="" type="button" ng-click="addIncomeUnits()" class="btn btn-sm btn-success" style="float:right;width:15%;">
+				<i class="glyphicon glyphicon-plus">
+					<a href="#/product_add"></span></a>
+				</i>Submit
+			</button>
+		</div>
+	  
+	</div>
+	
+	<!-- <div ng-repeat="cn in ctrl.newproduct">
+		<span> [[ cn.name ]]</span>
+		<span> [[ cn.unit ]]</span>
+		<span> [[ cn.price ]]</span>		
+		
+	</div> -->
+	
+	
+
+	<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+		<thead>
+			<tr>
+				
+				<th st-sort="item">item</th>
+				<th st-sort="sold_units">sold_units</th>
+				<th st-sort="price">total_price</th>
+				
+			</tr>
+			
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				
+				<td>[[row.name]]</td>
+				<td>[[row.unit]]</td>
+				<td>[[row.price]]</td>
+				
+				<td>
+					<button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+						<i class="glyphicon glyphicon-remove-circle">
+						</i>
+					</button>
+
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					<div st-pagination="" st-items-by-page="7" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+			
+		</tfoot>
+	</table>
+	<div style="float:right;margin-right:100px;">Total Income:[[total_price]]</div>
+</div>
+

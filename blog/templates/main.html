@@ -1,0 +1,49 @@
+<div style="border:1px solid;height:500px;" ng-controller="Autocomplete as ctrl" layout="column" ng-cloak="" class="autocompletedemoBasicUsage" >
+	<div style="border:1px solid;margin:auto 0;">
+		<md-content class="md-padding">
+			<form ng-submit="ctrl.submit()">
+				<div style="width: 500px;float:left;">
+					<md-autocomplete style="" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="What is your favorite US state?">
+					<md-item-template >
+					  <span ng-model="skills" md-highlight-text="ctrl.searchText" md-highlight-flags="^i">[[item.display]]</span>
+					  
+					</md-item-template>
+					<md-not-found>
+					  No states matching "[[ctrl.searchText]]" were found.
+					  <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+					</md-not-found>
+					</md-autocomplete>
+				</div>
+				
+				<input style="margin-left:50px;float:left;position:relative;top:-10px;" class="unit" type="text" ng-model="ctrl.unit" name="skill" />
+				
+				
+				<br>
+				<!-- <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
+				<md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
+				<md-checkbox ng-model="ctrl.isDisabled">Disable the input?</md-checkbox> -->
+				
+				<button type="submit" class="save btn btn-default" style="float:left;position:relative;top:-30px;color:steelblue">
+					<i class="fa fa-plus" ></i>
+				</button>
+				<!-- <input style="float:left;position:relative;top:-30px;" type="submit" id="submit" value="¥[¤J" /> -->
+				
+				<span> [[ ctrl.newproduct ]]</span>
+				<!-- <span> [[ ctrl.unit ]]</span> -->
+				
+				
+			</form>
+		</md-content>
+	  
+	</div>  
+	
+	<div id="edit-form" title="Edit item">
+		
+		<form action="/blog/edit_record" method="POST" class="post-form">{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="save btn btn-default">Save</button>
+		</form>
+
+	</div>
+</div>
+	
