@@ -1,0 +1,165 @@
+{% load staticfiles %}
+<!doctype html>
+<html  ng-app="Dashboard">
+<head>
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>coupleface</title>
+	<!-- <base href="/blog"> -->
+    <!--CSS-->
+	
+	<link rel="stylesheet" href="{% static 'css/angucomplete.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"  />
+	<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+
+    <!-- SCRIPTS -->
+    <!-- <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script> -->
+	<script src="{% static 'js/angular.min.js' %}"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> -->
+    <script src="{% static 'js/angular-cookies.js' %}"></script>
+    <script src="{% static 'js/angular-ui-router.js' %}"></script>
+    <script src="{% static 'js/ui-bootstrap.js' %}"></script>
+    <script src="{% static 'js/ui-bootstrap-tpls.js' %}"></script>
+	<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'ngjs/dashboard.js' %}" charset="Big5"></script>
+<!-- 	<script src="{% static 'ngjs/mainControllers.js' %}"></script> -->
+    <script src="{% static 'ngjs/smart-table.min.js' %}"></script>
+    <script src="{% static 'ngjs/productControllers.js' %}"></script>
+	<script src="{% static 'ngjs/materialControllers.js' %}"></script>
+	<script src="{% static 'ngjs/reportControllers.js' %}"></script>
+	
+	
+	
+	<!--for autocomplete--> 
+	
+	<script src="{% static 'ngjs/angular-touch.min.js' %}"></script>
+	<script src="{% static 'ngjs/main-controller.js' %}"></script>
+	<script src="{% static 'ngjs/angucomplete.js' %}"></script>
+	
+	<!-- for reporter -->
+	<link rel="stylesheet" href="{% static 'css/nv.d3.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="{% static 'js/nv.d3.js' %}"></script>
+	
+    
+	
+	<!-- <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.js"></script>
+    <script src="{% static 'ngjs/autocomplete.js' %}"></script>
+	<script src="{% static 'ngjs/ocLazyLoad.js' %}"></script >-->
+	
+	<!----> 
+	
+	<script>
+		// Loading the data for use in JS components here
+		
+		var productjson = {{product}};
+		var materialjson = {{material}};
+		var productmaterial = {{productmaterial}};
+		var productcost={};
+		var todaysold={{todaysold}}
+		console.log(productjson);
+		console.log(materialjson);
+		console.log(productmaterial);
+		console.log(todaysold);
+		
+		/* 算成本 */
+		for(var i=0; i< productmaterial.length ; i++){
+			var tempproductname=productmaterial[i].fields.productname
+			/* console.log(tempproductname)
+			console.log(Object.keys(productcost)) */
+			if( $.inArray(tempproductname, Object.keys(productcost)) != -1){
+				var tempmaterialname= productmaterial[i].fields.materialname
+				var tempmaterialunits=productmaterial[i].fields.quantity
+				/* console.log(tempmaterialname) */
+				for(var j=0; j< materialjson.length ; j++){
+					if(materialjson[j]["pk"]==tempmaterialname){
+						var tempmaterialunitscost=materialjson[j].fields.unitcost
+						/* console.log(tempmaterialunits)
+						console.log(tempmaterialunitscost) */
+						productcost[tempproductname]=productcost[tempproductname] + tempmaterialunitscost*tempmaterialunits
+					}
+				}
+		
+			}else{
+				var tempmaterialname= productmaterial[i].fields.materialname
+				var tempmaterialunits=productmaterial[i].fields.quantity
+				/* console.log(tempmaterialname) */
+				for(var j=0; j< materialjson.length ; j++){
+					if(materialjson[j]["pk"]==tempmaterialname){
+						var tempmaterialunitscost=materialjson[j].fields.unitcost
+						/* console.log(tempmaterialunits)
+						console.log(tempmaterialunitscost) */
+						productcost[tempproductname]=tempmaterialunitscost*tempmaterialunits
+					}
+				}
+				
+			}
+			
+		}
+		console.log(productcost);
+		
+		
+		
+		
+		
+	</script>
+
+	
+	
+</head>
+<body ng-controller="MasterCtrl">
+    <div id="page-wrapper" ng-class="{'active': toggle}" >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar">
+                <li class="sidebar-main">
+                    <a href="#" ng-click="toggleSidebar()">
+                        Couple Face
+                        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                    </a>
+                </li>
+                <li class="sidebar-title"><span>夫妻臉股份有限公司</span></li>
+                <li class="sidebar-list">
+                    <a href="#">Today's income <span class="menu-icon fa fa-tachometer"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a href="#/product">Product Edit <span class="menu-icon fa fa-tasks"></span></a>
+                </li>
+				<li class="sidebar-list">
+                    <a href="#/material">Material Edit <span class="menu-icon fa fa-tasks"></span></a>
+                </li>
+                <li class="sidebar-list" >
+                    <a href="#/report">Easy Report<span class="menu-icon fa fa-line-chart"></span></a>
+                </li>
+				<!--<li class="sidebar-list" >
+					<p>[[currenttime]]</p>
+				</li>
+                <li class="sidebar-list" >
+                    <a href="#/tagsInfo"><span class="menu-icon fa fa-fw fa-edit"></span></a>
+                </li>-->
+               
+            </ul>
+			
+        </div>
+        <!-- End Sidebar -->
+        <div id="content-wrapper" >
+            <div class="page-content">
+				
+                <!-- Main Content -->
+                <section data-ui-view></section>
+            </div><!-- End Page Content -->
+        </div><!-- End Content Wrapper -->
+    </div><!-- End Page Wrapper -->
+	
+	
+	
+</body>
+</html>
