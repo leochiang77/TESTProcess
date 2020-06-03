@@ -1,0 +1,157 @@
+﻿<div class="widget" ng-controller="InitPage" ng-init="initPage()">
+    <!--<div class="widget-body" style="padding: 0px;">
+        <iframe id="frameViewer" type="text/html" ng-src="{{url}}" width="100%" marginwidth="0" marginheight="0" onload="Javascript:reSetIframeHeight()" scrolling="auto" frameborder="0"> </iframe>
+    </div>-->
+
+    <div ng-controller="Datepicker1" style="font: 15px Verdana;">
+
+        <div style="width:100%;">
+            <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" ng-controller="myCtrl as Ctrl" style="border: 1px solid #B9B9FF;margin-left:5%;margin-top:20px;border-radius: 10px;width:90%;height:150px;">
+                <div style="color:#000000;margin:2.5% auto;margin-top:8px;height:100%;width:90%;">
+                    <div ng-show="show" style="color:#000000;font-weight: bold;font-size:16px;height:70%;width:100%;:">
+                        <div class="timetable ">
+                            <!-- table -->
+                            <div class="timerow">
+                                <!-- tr -->
+                                <div class="cell1">
+                                    <!-- td -->
+                                </div>
+                                <div class="cell2">
+                                    <br>
+                                    &nbsp&nbsp {{ 'abTime' | translate }}&nbsp&nbsp
+                                </div>
+                                <div class="cell3">
+                                    <br>
+                                    {{ 'wdfrom' | translate }}
+                                </div>
+                                <div class="cell4">
+                                    <br>
+                                    <input id="startTime" type="text" style="width:80%;font-size:14px;" class="jqueryPicker form-control" />
+                                </div>
+                                <div class="cell5">
+                                    <br>
+                                    {{ 'wdto' | translate }}
+                                </div>
+                                <div class="cell6">
+                                    <br>
+                                    <input id="endTime" value="" type="text" style="width:80%;font-size:14px;" class="jqueryPicker form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(".jqueryPicker").datetimepicker();
+
+                        </script>
+                    </div>
+
+                    <div ng-show="hide" ng-controller="myDate" style="color:#000000;font-weight: bold;font-size:16px;;height:70%;width:100%;">
+                        <div class="timetable ">
+                            <!-- table -->
+                            <div class="timerow">
+                                <!-- tr -->
+                                <div class="cell1">
+                                    <!-- td -->
+                                </div>
+                                <div class="cell2">
+                                    <br />
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ 'reTime' | translate }}
+                                </div>
+                                <div class="cell7">
+                                    <br />
+                                    <input id="startRelativeValue" type="text" value="1" style="width:20%; height:31px;font-size:12pt;margin-top: 9px;" />
+                                    <select name="value" ng-model="dateChosen" ng-options="temp.date for temp in dates" style="width:50%;"></select>
+                                    <input id="startRelativeUnit" type="hidden" name="dateChosen" value="{{ dateChosen.date }}" />
+                                </div>
+                                <div class="cell8">
+                                    <input id="endRelativeValue" value="" ng-hide="true" type="text" style="width:100px" />
+                                    <select name="value" ng-hide="true" ng-options="m for m in dates"></select>
+                                    <input id="endRelativeUnit" type="hidden" value="years" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div align="center" style="margin-left:auto;margin-right:auto;height:30% ">
+                        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false" ng-click="toggle()" style="font-size:16px;margin-top:1%; width:200px">
+                            {{ 'byreab' | translate }}
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--middle-->
+        <div id="tabs" style="border-color:B9B9FF;width:90%;margin-left:5%;margin-top:2%;float:left">
+
+            <div role="tabpanel" ng-controller="tabCtrl" ng-init="initaddTab()" style="font-size:16px;width:92%;margin-left:4%;margin-top:8px;margin-bottom:8px;">
+
+                <ul class="nav nav-tabs" role="tablist" style="border: 1px solid #B9B9FF;">
+                    <li role="presentation" ng-repeat="tab in tabs" ng-click="selectTab($index)">
+                        <a style="font-size: 16px;" id="inputprepare" value="{{$index}}" class="metricTab{{$index}}" data-target="#tab" aria-controls="home" role="tab" data-toggle="tab">{{ 'metric' | translate }}{{tab.id}}</a>
+                        <span id="removeMetric{{$index}}" ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span>
+                    </li>
+                    <li role="presentation" ng-click="addTab()">
+                        <a style="font-size: 16px;" aria-controls="home" role="tab" data-toggle="tab">( + )</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tab">
+                    </div>
+
+                </div>
+
+                <div id="tabet" style="width:620px; background:none;margin-top: 5px;">
+                    <!-- for dynamic tag content -->
+                    <div id="metricTemplate">
+                        <table class="metricNameTable">
+                            <tr>
+                                <td style="color:#000000;font-weight: bold;font-size: 20px;">&nbsp Metric Name &nbsp&nbsp</td>
+                                <td><input class="metricName"></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div>
+                    <button id="submitButton" style="font-size:16px;margin-top:2%;width:15%" translate="graph"></button>
+                    <button id="submitButtonCSV" style="font-size:16px;margin-left:2%; margin-top:2%;width:15%" value="Dropdown" data-dropdown="#saveDropdown" translate="save"></button>
+                </div>
+            </div>
+        </div>
+
+        <!--down-->
+        <div style="margin-left:5%;margin-top:10%;height:400px;width:90%;font-size:12px;">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <div> &nbsp </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center" id="flotTitle" class="graphSubtitle"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button id="resetZoom" align="center" class=ui-widget>Reset Zoom</button></td>
+                </tr>
+                <tr>
+                    <td style="width: 100%">
+                        <div id="chartContainer" style="height:350px;font-size:12px;color:#ffffff"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" style="padding-top: 30px;">
+                        <div id="graphLegend"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div ></div>
+</div>
+

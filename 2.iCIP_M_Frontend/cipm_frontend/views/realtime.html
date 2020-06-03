@@ -1,0 +1,128 @@
+﻿
+
+<div ng-controller="RealtimeController">
+    <!--<label class="checkbox-inline"><input type="checkbox" value="" ng-model="cipd1">CIPD-1</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="cipd2">CIPD-2</label>
+    <label class="checkbox-inline"><input type="checkbox" value="">CIPD-3</label>-->
+    <!--test div border style="border-color:#aaaaee;border-width:3px;border-style:solid;padding:5px;"-->
+    <div class="span5 label label-danger show-hide-animation" data-ng-show="initialStatus">
+        <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;&nbsp;{{ 'Error' | translate }}
+    </div>
+
+
+    <div class="row">
+        <div ng-repeat="cipd in allcipd" style="float: left;">
+            <label class="checkbox-inline"><input type="checkbox" value="" ng-model="myCIPD[cipd.iCIP_D_No]">{{cipd.iCIP_D_Name}}</label>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div ng-repeat="count in cipdCount" class="col-lg-8">
+            <div ng-show="myCIPD[count.count]">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">{{ 'TagSearch' | translate }}</div>
+                    </div>
+                    <fieldset>
+                        <legend>
+                            {{count.name}} {{ 'TAGS' | translate }}
+                        </legend>
+                        <!--<div ng-repeat="tag1 in count.tags" style="float: left">
+                            <label class="checkbox-inline"><input type="checkbox" value="" ng-model="myTag.selected[tag1.TagName]">{{tag1.TagName}}</label>
+                        </div>-->
+                        <div class="row">
+                            <table st-table="displayedCollection" st-safe-src="count.tags" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th st-sort="TagName">{{ 'TAGNAME' | translate }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5"><input st-search="" class="form-control pull-left" placeholder="{{ 'SEARCH' | translate }} ..." type="text" /></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="row in displayedCollection">
+                                        <td><label class="checkbox-inline"><input type="checkbox" value="" ng-model="myTag.selected[row.TagName]">{{row.TagName}}</label></td>
+                                    </tr>
+                                </tbody>
+                                <!--<tfoot>
+                                    <tr>
+                                        <td colspan="5" class="text-center">
+                                            <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>-->
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            <div st-template="pagination.html" st-pagination="" st-items-by-page="ctrl.itemsByPage"></div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="btn-group pull-right ng-scope">
+                                                <!-- could be within a ng-repeat-->
+                                                <button type="button" ng-class="{'active':ctrl.itemsByPage==10}" ng-click="ctrl.itemsByPage=10" class="btn btn-default">10</button>
+                                                <button type="button" ng-class="{'active':ctrl.itemsByPage==25}" ng-click="ctrl.itemsByPage=25" class="btn btn-default">25</button>
+                                                <button type="button" ng-class="{'active':ctrl.itemsByPage==50}" ng-click="ctrl.itemsByPage=59" class="btn btn-default">50</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="col-lg-8">
+        <table ng-table="usersTable" class="table table-bordered" show-filter="true">
+            <tbody>
+                <tr ng-repeat="person in datat" class="active">
+                    {{person}}
+                    <td data-title="'TagName'" sortable="'TagName'" filter="{ 'TagName': 'text' }">
+                        <label class="checkbox-inline"><input type="checkbox" value="" ng-model="myTag.selected[person.TagName]">{{person.TagName}}</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+    <div class="row">
+        <div class="col-lg-8">
+            <button class="btn btn-primary" data-ng-click="query()" ng-controller="TranslateCtrl">{{ 'QUERY' | translate }}</button>
+        </div>
+        <div class="col-lg-12">
+
+            <div class="widget" ng-repeat="data in dataset1  | toArray | filter:selectedTag ">
+                <div class="widget-header">
+                    <i class="fa fa-retweet"></i> {{data[0].key}}
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="widget-body medium ">
+
+                    <nvd3 options="options" data="data"></nvd3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="control-group">
+        <label class="control-label" ng-controller="TranslateCtrl">{{ 'FILTER' | translate }} : </label>
+        <input type="text" ng-model="selectedTag" typeahead="state for state in alltags  | filter:$viewValue " />
+    </div>-->
+    <!--Choose {{myTag.selected}}
+
+    <button data-ng-click="getServerTime()">>GetTime</button>-->
+    {{currentServerTimeManually}}
+    <!--{{data}}-->
+
+
+
+
+
+</div>

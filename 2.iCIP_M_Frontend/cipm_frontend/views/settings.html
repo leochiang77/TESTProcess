@@ -1,0 +1,94 @@
+﻿<div class="col-lg-4">
+    <div ng-controller="SetCtrl">
+        <form name="editForm" novalidate>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-pencil fa-fw"></i> {{ 'MQTTINFO' | translate }}
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="panel-body ">
+                    <div class="row">
+                        <div class="control-group">
+                            <label class="control-label">{{ 'IP' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="ip" data-ng-model="mqttInfo.IP_Address" placeholder="IP Address" required />
+                                <span class="errorMessage" ng-show="editForm.ip.$dirty && editForm.ip.$invalid">
+                                    {{ 'PIP' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'PORT' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="port" data-ng-model="mqttInfo.Port" placeholder="Port" required />
+                                <span class="errorMessage" ng-show="editForm.port.$dirty && editForm.port.$invalid">
+                                    {{ 'PPOR' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'User' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="user" data-ng-model="mqttInfo.User" placeholder="User" required />
+                                <span class="errorMessage" ng-show="editForm.user.$dirty && editForm.user.$invalid">
+                                    {{ 'PUser' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'Password' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="password" data-ng-model="mqttInfo.Password" placeholder="Password" required />
+                                <span class="errorMessage" ng-show="editForm.password.$dirty && editForm.password.$invalid">
+                                    {{ 'PPassword' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'RealtimeTopic' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="cipmTopic" data-ng-model="mqttInfo.SubscribeRealTimeTopic" placeholder="Topic" required />
+                                <span class="errorMessage" ng-show="editForm.cipmTopic.$dirty && editForm.cipmTopic.$invalid">
+                                    {{ 'PCTopic' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'ResendTopic' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="subcipmTopic" data-ng-model="mqttInfo.PublishReSendTopic" placeholder="Topic" required />
+                                <span class="errorMessage" ng-show="editForm.subcipmTopic.$dirty && editForm.subcipmTopic.$invalid">
+                                    {{ 'PRTopic' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{ 'HealthTopic' | translate }}：</label>
+                            <div class="controls">
+                                <input type="text" name="publishHealthStatusTopic" data-ng-model="mqttInfo.SubscribeHealthStatusTopic" placeholder="Topic" required />
+                                <span class="errorMessage" ng-show="editForm.publishHealthStatusTopic.$dirty && editForm.publishHealthStatusTopic.$invalid">
+                                    {{ 'PHTopic' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-ng-click="saveMQTTInfo()" ng-disabled="editForm.$invalid || !editForm.$dirty">{{ 'MODIFY' | translate }}</button>
+                            &nbsp;&nbsp;
+                        </div>
+                    </div>
+                    <div class="span5 label label-success show-hide-animation" data-ng-show="updateStatus">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;{{ 'Succeed' | translate }}
+                    </div>
+                    <div class="span5 label label-danger show-hide-animation" data-ng-show="fail">
+                        <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;&nbsp;Error: {{ errorMessage }}
+                    </div>
+                    <div class="span5 label label-danger show-hide-animation" data-ng-show="initialStatus">
+                        <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;&nbsp;{{ 'Error' | translate }}
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

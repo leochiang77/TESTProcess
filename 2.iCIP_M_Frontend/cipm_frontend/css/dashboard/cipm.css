@@ -1,0 +1,9 @@
+﻿fieldset {
+float: left;
+width: half the area;
+}
+fieldset label {
+display: inline; (though this should be default)
+padding: 0 enough for the sides;
+white-space: nowrap; don't let inputs wrap without bringing label text along
+}
