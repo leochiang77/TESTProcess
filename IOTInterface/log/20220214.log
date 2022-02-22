@@ -1,0 +1,6 @@
+2022-02-14 11:12:45 - ERROR -Leo : File "c:\users\leo\desktop\auo\r2rdashbord\app\routes.py", line 78, in getRefreshESP32Pic: [FileNotFoundError] 2
+2022-02-14 11:12:45 - ERROR -Leo : File "c:\users\leo\desktop\auo\r2rdashbord\app\routes.py", line 102, in getRefreshNanoPic: [FileNotFoundError] 2
+2022-02-14 11:19:55 - ERROR -Leo : File "c:\users\leo\desktop\auo\r2rdashbord\app\routes.py", line 102, in getRefreshNanoPic: [FileNotFoundError] 2
+2022-02-14 11:19:55 - ERROR -Leo : File "c:\users\leo\desktop\auo\r2rdashbord\app\routes.py", line 78, in getRefreshESP32Pic: [FileNotFoundError] 2
+2022-02-14 13:49:57 - ERROR -Leo : File "C:\Users\Leo\Desktop\auo\IOTInterface\app\routes.py", line 102, in getRefreshNanoPic: [FileNotFoundError] 2
+2022-02-14 13:49:57 - ERROR -Leo : File "C:\Users\Leo\Desktop\auo\IOTInterface\app\routes.py", line 78, in getRefreshESP32Pic: [FileNotFoundError] 2

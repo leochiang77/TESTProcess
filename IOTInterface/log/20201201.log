@@ -1,0 +1,6 @@
+2020-12-01 14:28:15 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 38, in initPage: [IndexError] list index out of range
+2020-12-01 15:03:48 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 78, in getRefreshPic: [PermissionError] 13
+2020-12-01 15:03:51 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 78, in getRefreshPic: [PermissionError] 13
+2020-12-01 15:05:33 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 74, in getRefreshPic: [IndexError] list index out of range
+2020-12-01 15:05:38 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 74, in getRefreshPic: [IndexError] list index out of range
+2020-12-01 15:08:05 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 75, in getRefreshPic: [IndexError] list index out of range

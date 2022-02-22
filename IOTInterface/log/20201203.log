@@ -1,0 +1,2 @@
+2020-12-03 11:36:42 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 79, in getRefreshPic: [PermissionError] 13
+2020-12-03 11:51:51 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 75, in getRefreshPic: [IndexError] list index out of range

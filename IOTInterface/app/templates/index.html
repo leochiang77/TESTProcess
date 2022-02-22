@@ -1,0 +1,73 @@
+{%extends 'base.html' %}
+{% block content%}
+<div style="height:70px;">
+    <label style="color:white;float:left;font-size: 36px;font-weight: bold;margin-left: 20px;">AUO</label>
+    <div style="float:right;margin-top: 10px;margin-right: 20px;">
+        <button id="clear" style="width:80px;margin-left:10px;font-size: 16px;font-weight: bolder;" class="btn btn-info my-sm-0" type="button" onclick="clean()">Clear</button>
+        <button id="stop" style="width:80px;margin-left:10px;font-size: 16px;font-weight: bolder;" class="btn btn-warning my-sm-0" type="button" onclick="stop()" >Stop</button>
+        <button id="start" style="width:80px;margin-left:10px;font-size: 16px;font-weight: bolder;" class="btn btn-success my-sm-0" type="button" onclick="start()">Start</button>
+    </div>
+</div>
+<div style="margin:auto;">
+    <table style="width:100%;table-layout: fixed;margin-top:10px;">
+        <tr>
+            <td style="width:33%;height:180px;">
+                <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">溫度</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">AM2315</span></div>
+                <div id="amtemperatureGauge" style="width:45%;height:80%;float:left;"></div>
+                <div id="amtemperatureLine" style="width:50%;height:80%;float:left;"></div>
+            </td>
+            <td style="width:33%;height:180px;" >
+                <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">濕度</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">AM2315</span></div>
+                <div id="amhumidityGauge" style="width:45%;height:80%;float:left;"></div>
+                <div id="amhumidityLine" style="width:50%;height:80%;float:left;"></div>
+            </td>
+            <td style="width:33%;height:180px;">
+                <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">溫度</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">DS18B20</span></div>
+                <div id="dstemperatureGauge" style="width:45%;height:80%;float:left;"></div>
+                <div id="dstemperatureLine" style="width:50%;height:80%;float:left;"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="border:1px solid ;margin:auto;">
+    <table style="width:100%;table-layout: fixed;margin-top:5px;">
+        <tr>
+            <td width="55%" style="">
+                <div style="width:50%;height:350px;display:inline-block;float:left;">
+                    <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">電流</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">ADS1115</span></div>
+                    <div id="currentGauge"  style="width:100%;height:80%;">
+                    </div>
+                    <div id="currentProgress" class="progress" style="width:60%;margin:-10px auto 0px;">
+                    </div>
+                </div>
+                
+                <div style="width:50%;height:350px;display:inline-block;float:left;">
+                    <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">電量</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">ADS1115</span></div>
+                    <div id="electricityGauge"  style="width:100%;height:80%;">
+                    </div>
+                    <div id="electricityProgress" class="progress" style="width:60%;margin:-10px auto 0px;">
+                    </div>
+                </div>
+            </td>
+            <td width="45%" style="">
+                <div style="width:100%;height:350px;display:inline-block;float:left;">
+                    <div style="color:white;font-size:24px;text-align: center;width:100%;"><span style="background-color: #015dbf;padding:5px;">震動</span><span style="background-color: #1e7e34;padding:5px;font-size:16px;">MP9250</span></div>
+                    <table style="width:30%;height:20%;margin-left:50px;">
+                        <tr>
+                            <td style="color:white;text-align:center;">x-Axis</td>
+                            <td style="color:white;text-align:center;">y-Axis</td>
+                            <td style="color:white;text-align:center;">z-Axis</td>
+                        </tr>
+                        <tr id="arduinovibeAxisLamp">
+                        </tr>
+                    </table>
+                    
+                    <div id="arduinovibeLine"  style="width:100%;height:70%;">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

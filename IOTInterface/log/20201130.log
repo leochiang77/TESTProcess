@@ -1,0 +1,3 @@
+2020-11-30 16:22:13 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 24, in initPage: [AttributeError] module 'ntpath' has no attribute 'exist'
+2020-11-30 16:23:46 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 24, in initPage: [AttributeError] module 'ntpath' has no attribute 'exist'
+2020-11-30 16:24:05 - ERROR -Administrator : File "C:\Users\Administrator\Desktop\R2RDashbord\app\routes.py", line 24, in initPage: [AttributeError] module 'ntpath' has no attribute 'exist'
